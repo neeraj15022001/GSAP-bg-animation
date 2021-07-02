@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>GSAP BG Animation</title>
     <style>
       body {
         background-image: linear-gradient(
@@ -21,6 +21,10 @@
         height: 100vh;
         overflow: hidden;
       }
+      #bg-blocks {
+        width: 100vw;
+        height: 100vh;
+      }
       #Rectangle_1,
       #Rectangle_2,
       #Rectangle_3,
@@ -30,50 +34,10 @@
         transform-box: fill-box;
         transform-origin: center;
       }
-      /* #Rectangle_1, #Rectangle_2, #Rectangle_3,#Rectangle_4,#Rectangle_5,#Rectangle_6 {
-        transition: 0.3s ease-in-out;
-        -moz-transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        transform-origin: center;
-        transform-box: fill-box;
-        transform: rotate(0deg);
-        animation: rotate 20s ease-in-out infinite forwards;
-      }
-      @keyframes rotate {
-        0% {
-          -moz-transform: rotate(0deg);
-          -webkit-transform: rotate(0deg);
-          -o-transform: rotate(0deg);
-          -ms-transform: rotate(0deg);
-          transform: rotate(0deg);
-        }
-        50% {
-          -moz-transform: rotate(360deg);
-          -webkit-transform: rotate(360deg);
-          -o-transform: rotate(360deg);
-          -ms-transform: rotate(360deg);
-          transform: rotate(360deg);
-        }
-        100% {
-          -moz-transform: rotate(0deg);
-          -webkit-transform: rotate(0deg);
-          -o-transform: rotate(0deg);
-          -ms-transform: rotate(0deg);
-          transform: rotate(0deg);
-        } */
-      /* } */
     </style>
   </head>
   <body>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      width="1440"
-      height="900"
-      viewBox="0 0 1440 900"
-    >
+    <svg id="bg-blocks">
       <defs>
         <linearGradient
           id="linear-gradient"
@@ -155,80 +119,92 @@
     </svg>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"></script>
     <script>
-      // let tween = gsap.to("#Rectangle_1", {rotation: 360, x: 500,y : -10, duration: 5, ease: "power2.inOut"});
-      const rect1 = document.getElementById("Rectangle_1");
-      const rect2 = document.getElementById("Rectangle_2");
-      const rect3 = document.getElementById("Rectangle_3");
-      const rect4 = document.getElementById("Rectangle_4");
-      const rect5 = document.getElementById("Rectangle_5");
-      const rect6 = document.getElementById("Rectangle_6");
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      function randomX() {
-        return Math.random() * width - 150;
-      }
-      function randomY() {
-        return Math.random() * height - 150;
-      }
-      gsap.to(rect1, {
-        rotation: 360,
-        x: () => randomX(),
-        y: () => randomY(),
-        repeatRefresh: true,
-        duration: 5,
-        ease: "power2.inOut",
-        repeat: -1,
-        yoyo: true,
-      });
-      gsap.to(rect2, {
-        rotation: 360,
-        x: () => randomX(),
-        y: () => randomY(),
-        repeatRefresh: true,
-        duration: 4,
-        ease: "power2.inOut",
-        repeat: -1,
-        yoyo: true,
-      });
-      gsap.to(rect3, {
-        rotation: 360,
-        x: () => randomX(),
-        y: () => randomY(),
-        repeatRefresh: true,
-        duration: 3,
-        ease: "power2.inOut",
-        repeat: -1,
-        yoyo: true,
-      });
-      gsap.to(rect4, {
-        rotation: 360,
-        x: () => randomX(),
-        y: () => randomY(),
-        repeatRefresh: true,
-        duration: 5,
-        ease: "power2.inOut",
-        repeat: -1,
-        yoyo: true,
-      });
-      gsap.to(rect5, {
-        rotation: 360,
-        x: () => randomX(),
-        y: () => randomY(),
-        repeatRefresh: true,
-        duration: 2,
-        ease: "power2.inOut",
-        repeat: -1,
-        yoyo: true,
-      });
-      gsap.to(rect6, {
-        rotation: 360,
-        x: () => randomX(),
-        y: () => randomY(),
-        repeatRefresh: true,
-        duration: 5,
-        ease: "power2.inOut",
-        repeat: -1,
-        yoyo: true,
+      window.addEventListener("load", () => {
+        const svg = document.getElementById("bg-blocks");
+        svg.setAttribute(
+          "viewBox",
+          `0 0 ${window.innerWidth} ${window.innerHeight}`
+        );
+        const rect1 = document.getElementById("Rectangle_1");
+        const rect2 = document.getElementById("Rectangle_2");
+        const rect3 = document.getElementById("Rectangle_3");
+        const rect4 = document.getElementById("Rectangle_4");
+        const rect5 = document.getElementById("Rectangle_5");
+        const rect6 = document.getElementById("Rectangle_6");
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        function randomX() {
+          return Math.random() * width;
+        }
+        function randomY() {
+          return Math.random() * height;
+        }
+        gsap.to(rect1, {
+          rotation: 360,
+          x: () => randomX(),
+          y: () => randomY(),
+          repeatRefresh: true,
+          duration: 5,
+          ease: "power2.inOut",
+          repeat: -1,
+          yoyo: true,
+        });
+        gsap.to(rect2, {
+          rotation: 360,
+          x: () => randomX(),
+          y: () => randomY(),
+          repeatRefresh: true,
+          duration: 4,
+          ease: "power2.inOut",
+          repeat: -1,
+          yoyo: true,
+        });
+        gsap.to(rect3, {
+          rotation: 360,
+          x: () => randomX(),
+          y: () => randomY(),
+          repeatRefresh: true,
+          duration: 3,
+          ease: "power2.inOut",
+          repeat: -1,
+          yoyo: true,
+        });
+        gsap.to(rect4, {
+          rotation: 360,
+          x: () => randomX(),
+          y: () => randomY(),
+          repeatRefresh: true,
+          duration: 5,
+          ease: "power2.inOut",
+          repeat: -1,
+          yoyo: true,
+        });
+        gsap.to(rect5, {
+          rotation: 360,
+          x: () => randomX(),
+          y: () => randomY(),
+          repeatRefresh: true,
+          duration: 2,
+          ease: "power2.inOut",
+          repeat: -1,
+          yoyo: true,
+        });
+        gsap.to(rect6, {
+          rotation: 360,
+          x: () => randomX(),
+          y: () => randomY(),
+          repeatRefresh: true,
+          duration: 5,
+          ease: "power2.inOut",
+          repeat: -1,
+          yoyo: true,
+        });
+        window.addEventListener("resize", () => {
+          svg.setAttribute(
+            "viewBox",
+            `0 0 ${window.innerWidth} ${window.innerHeight}`
+          );
+        });
       });
     </script>
   </body>
